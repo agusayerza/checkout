@@ -1,0 +1,20 @@
+server:
+  port : 8080
+  address: 0.0.0.0
+spring:
+  jpa:
+    generate-ddl: true
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/checkout
+    username: postgres
+    password: password
+    driverClassName: org.postgresql.Driver
+
+payment:
+  service:
+    implementation: Production
