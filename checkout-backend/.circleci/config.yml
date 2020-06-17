@@ -14,7 +14,7 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/postgres:9.4
 
-    working_directory: ~/repo/checkout-backend
+    working_directory: ~/repo
 
     environment:
       # Customize the JVM maximum heap limit
@@ -27,19 +27,19 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "build.gradle" }}
+            - v1-dependencies-{{ checksum "~/checkout-backend/build.gradle" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: gradle dependencies
+      - run: ~/checkout-backend/gradle dependencies
 
       - save_cache:
           paths:
-            - ~/.gradle
-          key: v1-dependencies-{{ checksum "build.gradle" }}
+            - ~/checkout-backend/.gradle
+          key: v1-dependencies-{{ checksum "~/checkout-backend/build.gradle" }}
 
       # run tests!
-      - run: gradle test
+      - run: ~/checkout-backend/gradle test
       - setup_remote_docker
 
       # This should go into custom primary image, here's only for the sake of explanation
