@@ -23,4 +23,7 @@ public class CreateProductDto {
     public Long getUserId() {
         return userId;
     }
+
+    public CreateProductDto() {
+    }
 }
