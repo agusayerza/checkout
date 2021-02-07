@@ -51,3 +51,4 @@ jobs:
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - run: ./script.sh
 
+
